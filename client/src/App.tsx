@@ -7,6 +7,8 @@ const JOB_API_URL = 'http://localhost:3001/api/jobs';
 export interface JobsInterface {
   title: string;
   company: string;
+  location: string;
+  created_at: string;
 }
 
 async function fetchJobs(updateCb: { (value: React.SetStateAction<JobsInterface[]>): void }) {
