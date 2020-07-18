@@ -1,34 +1,21 @@
 import React from 'react';
+import { Container } from '@material-ui/core';
 import './App.css';
 import Jobs from './Jobs';
+import { JobInterface } from './interfaces';
+import {fetchJobs} from './api/jobs-service'
 
-const JOB_API_URL = 'http://localhost:3001/api/jobs';
-
-export interface JobsInterface {
-  title: string;
-  company: string;
-  location: string;
-  created_at: string;
-}
-
-async function fetchJobs(updateCb: { (value: React.SetStateAction<JobsInterface[]>): void }) {
-  const res = await fetch(JOB_API_URL);
-  let json = await res.json();
-
-  updateCb(json);
-}
-
-function App() {
-  const [jobList, updateJobs] = React.useState <JobsInterface[]>([]);
+const App = () => {
+  const [jobList, updateJobs] = React.useState<JobInterface[]>([]);
 
   React.useEffect(() => {
     fetchJobs(updateJobs);
   }, [])
 
   return (
-    <div className="App">
+    <Container fixed>
       <Jobs jobs={jobList} />
-    </div>
+    </Container>
   );
 }
 
