@@ -13,3 +13,9 @@ export interface JobProps {
     selectJob: (job: JobInterface) => void;
     handleClickOpen: () => void
 }
+
+export interface ModalProps {
+    job: JobInterface;
+    open: boolean;
+    handleClose: () => void
+}

@@ -7,15 +7,9 @@ import {
     DialogActions,
     Button
 } from "@material-ui/core";
-import { JobInterface } from './interfaces';
+import { ModalProps } from './interfaces';
 
-interface Props {
-    job: JobInterface;
-    open: boolean;
-    handleClose: () => void
-}
-
-const JobModal: React.FC<Props> = ({ job, open, handleClose }) => {
+const JobModal: React.FC<ModalProps> = ({ job, open, handleClose }) => {
     if (!job.title) {
         return <div />;
     }
